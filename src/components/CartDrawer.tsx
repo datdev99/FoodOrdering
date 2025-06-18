@@ -16,6 +16,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
   
   const handleCheckout = () => {
     if (cartItems.length > 0) {
+      console.log(cartItems, 'cartItems');
       message.success('Đơn hàng của bạn đã được gửi đến nhà bếp và sẽ được phục vụ trong thời gian sớm nhất!');
       clearCart();
       onClose();
