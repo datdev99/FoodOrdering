@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Clock, CheckCircle, AlertCircle, Users, ChefHat, Timer, Bell, DollarSign, Receipt } from 'lucide-react';
+import axios from 'axios';
 
 const KitchenAdmin = () => {
+  console.log(window.location.host, 's');
+  
+  axios.get('https://localhost:7251/api/Shop', {
+    headers: {
+      'X-Subdomain': window.location.host
+    },
+    withCredentials: true
+  })
   const [orders, setOrders] = useState([
     {
       id: 'DH001',
@@ -60,12 +69,12 @@ const KitchenAdmin = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeTab, setActiveTab] = useState('all');
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentTime(new Date());
+  //   }, 1000);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   const updateItemStatus = (orderId, itemId, newStatus) => {
     setOrders(orders.map(order => {

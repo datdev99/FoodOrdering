@@ -28,24 +28,24 @@ const Homepage = () => {
         : menuData.filter(item => item.category === selectedCategory);
   return (
     <div>
-        <CartProvider>
-              <Layout className="min-h-screen bg-gray-100">
-                <Content className="max-w mx-auto pb-24">
-                  <Header />
-                  <CategoryTabs 
-                    categories={categories} 
-                    selectedCategory={selectedCategory}
-                    onSelectCategory={setSelectedCategory}
-                  />
-                  <MenuList menuItems={filteredMenu} />
-                </Content>
-                <CartButton onClick={() => setIsCartOpen(true)} />
-                <CartDrawer 
-                  open={isCartOpen} 
-                  onClose={() => setIsCartOpen(false)} 
-                />
-              </Layout>
-            </CartProvider>
+      <CartProvider>
+        <Layout className="min-h-screen bg-gray-100">
+          <Content className="max-w mx-auto pb-24">
+            <Header />
+            <CategoryTabs 
+              categories={categories} 
+              selectedCategory={selectedCategory}
+              onSelectCategory={setSelectedCategory}
+            />
+            <MenuList menuItems={filteredMenu} />
+          </Content>
+          <CartButton onClick={() => setIsCartOpen(true)} />
+          <CartDrawer 
+            open={isCartOpen} 
+            onClose={() => setIsCartOpen(false)} 
+          />
+        </Layout>
+      </CartProvider>
     </div>
   )
 }
